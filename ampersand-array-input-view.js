@@ -162,15 +162,15 @@ module.exports = View.extend({
             removable: removable,
             type: this.type
         };
-        var field = new FieldView(initOptions);
-        field.template = this.fieldTemplate;
-        field.render();
         if(self.fields.length < self.maxLength){
+            var field = new FieldView(initOptions);
+            field.template = this.fieldTemplate;
+            field.render();
             this.fieldsRendered += 1;
             this.fields.push(field);
             this.queryByHook('field-container').appendChild(field.el);
+            return field;
         }
-        return field;
     },
     clearFields: function () {
         this.fields.forEach(function (field) {
