@@ -165,9 +165,11 @@ module.exports = View.extend({
         var field = new FieldView(initOptions);
         field.template = this.fieldTemplate;
         field.render();
-        this.fieldsRendered += 1;
-        this.fields.push(field);
-        this.queryByHook('field-container').appendChild(field.el);
+        if(self.fields.length < self.maxLength){
+            this.fieldsRendered += 1;
+            this.fields.push(field);
+            this.queryByHook('field-container').appendChild(field.el);
+        }
         return field;
     },
     clearFields: function () {
