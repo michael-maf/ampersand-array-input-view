@@ -141,7 +141,8 @@ module.exports = View.extend({
     handleAddFieldClick: function (e) {
         e.preventDefault();
         var field = this.addField('');
-        field.input.focus();
+        if(field)
+           field.input.focus();
     },
     addField: function (value) {
         var self = this;
